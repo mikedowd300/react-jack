@@ -32,26 +32,26 @@ class AddPlayerForm extends Component {
       <div className="form-wrapper wrapper">
         <form onSubmit={this.handleSubmit} >
           <label>
-            <p className="label-name">Enter player's name below!</p>
-            <input 
-              className="input-box" 
+            <p className="label-name">Enter players name below!</p>
+            <input
+              className="input-box"
               type="text"
-              value={this.state.name} 
+              value={this.state.name}
               onChange={this.handleChange} />
           </label>
           <br />
-          <input className="btn" 
-            type="submit" 
+          <input className="btn"
+            type="submit"
             value="ADD PLAYER" />
         </form>
-        <input className="btn" 
-            type="submit" 
-            value="Deal!!" 
+        <input className="btn"
+            type="submit"
+            value="Deal!!"
             onClick={() => {this.props.deal()}}/>
       </div>
     );
   }
-  
+
 }
 
 export default AddPlayerForm;

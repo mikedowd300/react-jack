@@ -6,7 +6,7 @@ class Player extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       id: this.props.player.id,
       name: this.props.player.name,
       bankroll: 90,
@@ -26,17 +26,13 @@ class Player extends Component {
     this.changeWager = this.changeWager.bind(this);
   }
 
-  updatePlayersHands(hand) {
-    
-  }
-
   changeWager(amt) {
     let wager = this.state.wager;
     let bankroll = this.state.bankroll;
     if(amt < 0) {
       if(-wager > amt) {
         amt = -wager;
-      } 
+      }
     } else {
       if(amt > bankroll) {
         amt = bankroll
@@ -61,8 +57,8 @@ class Player extends Component {
         <p>{this.props.player.name}</p>
         <p>{this.props.player.bankroll}</p>
       </div>
-      
-      <div className="hands-wrapper">
+
+      <div className={ !this.props.placedBets ? 'hide' : 'hands-wrapper' }>
         {hands}
       </div>
       <div className={this.state.isDealer || this.props.placedBets ? 'hide' : 'wager-wrapper'}>
