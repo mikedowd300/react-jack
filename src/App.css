@@ -1,0 +1,134 @@
+.App {
+  text-align: center;
+}
+
+body, #root, .App {
+  width: 100%;
+  height: 100vh;
+}
+
+.flexer {
+  display: flex;
+}
+
+.flexer-center{
+  display: flex;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
+
+label {
+  padding: 10px;
+}
+
+.btn, .wager-btn {
+  text-align: center;
+  height: 2em;
+  width: 20%;
+  padding: .3em;
+  margin: 20px auto;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px black;
+  background-color: rgb(206, 180, 180);
+}
+
+.wager-btn {
+  margin-top: 10px;
+}
+
+.input-box {
+  text-align: center;
+  font-size: 1em;
+  height: 3em;
+  width: 20%;
+  padding: .3em;
+  margin: auto;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.width-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.game-wrapper {
+  background-color: grey;
+}
+
+.dealer-wrapper {
+  width: 100%;
+  height: 40%;
+}
+
+.players-wrapper {
+  width: 100%;
+  height: 60%;
+  background-color: salmon;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.player-wrapper {
+  width: 33%;
+  height: 80%;
+  padding: 10px;
+  margin: auto;
+  overflow-x: none;
+  overflow-y: visible;
+  border-right: .2px solid grey;
+  border-left: .2px solid gray;
+}
+
+.inner-dealer-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.hands-wrapper {
+  margin: 0;
+  width: 100%;
+  height: 85%;
+}
+
+.card-wrapper {
+  width: 50%;
+  max-width: 400px;
+  height: 60%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dealer-card-wrapper {
+  width: 25%;
+  max-width: 400px;
+  height: 70%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.wager-wrapper {
+  margin: 0;
+  width: 100%;
+  height: 15%;
+  margin-top: -70%;
+}
+
+.info-wrapper {
+  margin: 3px;
+  width: 100%;
+  justify-content: space-around;
+}
