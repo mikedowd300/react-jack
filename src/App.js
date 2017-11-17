@@ -28,8 +28,6 @@ class App extends Component {
         });
         this.setState({
           deck: data.data.cards
-        }, () => {
-          this.render();
         });
       });
     })

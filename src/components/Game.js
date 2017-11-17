@@ -37,21 +37,22 @@ class Game extends Component {
         this.getCardsVal = this.getCardsVal.bind(this);
         this.calculateSoftValue = this.calculateSoftValue.bind(this);
         this.getHandsValues = this.getHandsValues.bind(this);
+        this.updateWager = this.updateWager.bind(this);
     }
 
-    nextId = 0;
+    nextId = 1;
 
     componentWillReceiveProps(nextProps) {
         this.setState({
             deck: nextProps.deck,
             deckIsFull: true
-        },() => this.render());
+        });
     }
 
     incActivePlayer() {
         let activePlayer = this.state.activePlayer;
         if(activePlayer > this.state.players.length) {
-            activePlayer === 0
+            activePlayer = 0
         } else {
             activePlayer++;
         }
@@ -146,13 +147,17 @@ class Game extends Component {
       return players;
     }
 
+    updateWager(wager, bankroll, id) {
+        let player = Object.assign({}, this.state.players[id-1]);
+        player.wager = wager;
+        player.bankroll = bankroll;
+        this.updatePlayerById(player);
+    }
+
     dealFirstTwoCards() {
-        console.log('dealing the first 2 cards');
         let deck = this.state.deck.slice(0);
         let players = this.state.players.slice(0);
         let dealer = Object.assign({},this.state.dealer);
-
-        console.log(players);
 
         for(let i = 0; i < 2; i++) {
             players.forEach(player => {
@@ -165,15 +170,13 @@ class Game extends Component {
             }
         }
 
-        console.log(players);
-
         players = this.getHandsValues(players);
 
         this.setState({
             deck,
             players,
             dealer
-        }, () => console.log(this.state));
+        });
     }
 
     updatePlayerById(player) {
@@ -191,22 +194,20 @@ class Game extends Component {
     }
 
     deal() {
-      console.log(this.state);
         this.setState({
             placedBets: true
-        }, () => {
-          console.log(this.state);
-          this.dealFirstTwoCards();
-        });
+        }, () => { this.dealFirstTwoCards() });
     }
 
     render() {
         let players = [];
         this.state.players.forEach((player, index) => {
-            players.push(<Player incActivePlayer={this.incActivePlayer}
+            players.push(<Player 
+                incActivePlayer={this.incActivePlayer}
                 player={player}
                 placedBets={this.state.placedBets}
                 updatePlayerById={this.updatePlayerById}
+                updateWager={this.updateWager}
                 key={index}/>)
         });
         return (
@@ -219,9 +220,10 @@ class Game extends Component {
                 </div>
                 <div className={this.state.placedBets ? 'wrapper' : 'hide'}>
                     <Player
-                        incActivePlayer={this.incActivePlayer}
                         player={this.state.dealer}
-                        updateDealer={this.updateDealer}/>
+                        placedBets={this.state.placedBets}
+                        updateDealer={this.updateDealer}
+                        incActivePlayer={this.incActivePlayer}/>
                 </div>
             </div>
             <div className="players-wrapper flexer">
